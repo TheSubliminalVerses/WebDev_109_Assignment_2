@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    This webpage is written by Mani Gudvardarson and Michael Adrian Polesensky
+    for Assignment 1 in Web Technology at VU University Amsterdam.
+
+    Coordinator: J.R . van Ossenbruggen
+    TA: Mithat Ozgun
+    Group: 109
+    Date: 13.1.2022
+ -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <title>Awesome Shop (WIP title)</title>
+    <!-- reserved for *.loader.js file -->
+    <!-- <script defer src="loaderJS"></script> -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script defer src="./src/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="intro">
+            <h1>About This Page</h1>
+            <p>We have a large variety of high quality items straight from the manufacturers.</p>
+        </div>
+        <div class="header-row">
+            <div class="contact">
+                <h2>Where can you find us?</h2>
+                <ul class="no-bullets">
+                    <li>Address: <strong>2nd street, NewYork</strong></li>
+                    <li>Phone: <a href="tel:+1311255464">+1 311 255 464</a></li>
+                    <li>Contact: <a href="mailto:astore@support.com">astore@support.com</a></li>
+                </ul>
+            </div>
+            <div class="shopping-basket">
+                <h2>Shopping basket</h2>
+                <ul class="image-list">
+                    <li>Items: <strong>3 items</strong></li>
+                    <li>Total: €1.239.30</li>
+                </ul>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#top-selling-products">Top Selling Products</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#styling-examples">Styling Examples</a></li>
+                <li><a href="#return-policy">Return Policy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="shop-main">
+        <section class="top-selling">
+            <div>
+                <h2>Top Selling Categories</h2>
+                <ol>
+                    <li>Smartphones</li>
+                    <li>Laptops</li>
+                    <li>PCs</li>
+                    <li>Monitors</li>
+                    <li>Smartphone Covers</li>
+                </ol>
+            </div>
+            <div>
+                <h2>Top Selling Brands</h2>
+                <ol>
+                    <li>Apple</li>
+                    <li>Samsung</li>
+                    <li>LG</li>
+                </ol>
+            </div>
+        </section>
+
+        <section  class="top-selling-products" id="top-selling-products">
+            <h2>Top Selling Products</h2>
+
+            <form action="https://wt.ops.labs.vu.nl/api22/6b1e7103" method="post" id="add-product"></form>
+            <table>
+                <caption>Product table</caption>
+                <thead>
+                    <tr>
+                        <th>brand</th>
+                        <th>model</th>
+                        <th><abbr title="Operating System">os</abbr></th>
+                        <th>screensize</th>
+                        <th>image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="input-row">
+                        <td><input name="brand" type="text" placeholder="Example: Apple" form="add-product" required></td>
+                        <td><input name="model" type="text" placeholder="Example: iPhone 12" form="add-product" required></td>
+                        <td><input name="os" type="text" placeholder="Example: iOS" form="add-product" required></td>
+                        <td><input name="screensize" type="number" form="add-product" required><abbr title="Inches">in</abbr></td>
+                        <td><input name="image" type="file" form="add-product" required><button type="submit" form="add-product">Add Product</button></td>
+                    </tr>
+                    <tr>
+                        <td>Apple</td>
+                        <td>iPhone 13</td>
+                        <td>iOS 15.0</td>
+                        <td>6.1 <abbr title="Inches">in</abbr></td>
+                        <td class="product-image">
+                            <figure>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/IPhone_13_vector.svg/400px-IPhone_13_vector.svg.png" alt="Apple iPhone 13">
+                                <figcaption>Apple iPhone 13</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Apple</td>
+                        <td>MacBook Pro 14</td>
+                        <td>macOS 11.6</td>
+                        <td>14 <abbr title="Inches">in</abbr></td>
+                        <td class="product-image">
+                            <figure>
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgSxgpT72SixqlSOnoSaoyaGmRethsjDBfXQ&usqp=CAU" alt="Apple MacBook Pro 14">
+                                <figcaption>Apple MacBook Pro 14</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Samsung</td>
+                        <td>Galaxy S21 Ultra</td>
+                        <td>Android 11</td>
+                        <td>6.8 <abbr title="Inches">in</abbr></td>
+                        <td class="product-image">
+                            <figure>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/GalaxyS21.png/440px-GalaxyS21.png" alt="Samsung Galaxy S21 Ultra">
+                                <figcaption>Apple iPhone 13</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Apple</td>
+                        <td>Watch Series 7</td>
+                        <td>watchOS 8.3</td>
+                        <td>1.691 <abbr title="Inches">in</abbr></td>
+                        <td class="product-image">
+                            <figure>
+                                <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/MKUQ3_VW_PF+watch-45-alum-midnight-nc-7s_VW_PF_WF_CO?wid=1400&hei=1400&trim=1,0&fmt=p-jpg&qlt=95&.v=1632171068000,1631661680000" alt="Apple Watch Series 7">
+                                <figcaption>Apple Watch Series 7</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Microsoft</td>
+                        <td>Surface Laptop 4</td>
+                        <td>Windows 11</td>
+                        <td>15 <abbr title="Inches">in</abbr></td>
+                        <td class="product-image">
+                            <figure>
+                                <img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RWBrzy?ver=85d4&q=90&m=6&h=270&w=270&b=%23FFFFFFFF&f=jpg&o=f&aim=true" alt="Microsoft Surface Laptop 4">
+                                <figcaption>Microsoft Surface Laptop 4</figcaption>
+                            </figure>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="table-footnote"><em>All specifications on our products are gathered from the respected wholesaler. We take no responsibility for inaccurate data.</em></div>
+            <div class="table-footnote">For <abbr title="Operating System">OS</abbr> definitions click <a href="#os-definitions">here</a>.</div>
+        </section>
+
+        <section id="reviews">
+            <h2>Reviews</h2>
+            <table class="reviews">
+                <caption>Table of reviews</caption>
+                <thead>
+                    <tr>
+                        <th class="table-date">Date</th>
+                        <th>User</th>
+                        <th>Feedback</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10 Jan 2022</td>
+                        <td>Mike</td>
+                        <td>Thanks</td>
+                        <td class="score">&#9734;&#9734;&#9733;&#9733;&#9733;</td>
+                    </tr>
+                    <tr>
+                        <td>8 Jan 2022</td>
+                        <td>Alice</td>
+                        <td>Great service and fast delivery</td>
+                        <td class="score">&#9734;&#9733;&#9733;&#9733;&#9733;</td>
+                    </tr>
+                    <tr>
+                        <td>4 Jan 2022</td>
+                        <td>Jenny</td>
+                        <td>Best webshop, use it all the time.</td>
+                        <td class="score">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
+                    </tr>
+                    <tr>
+                        <td>2 Jan 2022</td>
+                        <td>Henry</td>
+                        <td>Great prices and large selection of products.</td>
+                        <td class="score">&#9734;&#9733;&#9733;&#9733;&#9733;</td>
+                    </tr>
+                    <tr>
+                        <td>1 Jan 2022</td>
+                        <td>Flinn</td>
+                        <td>I had a small issue with the product, customer service solved the issue right away.</td>
+                        <td class="score">&#9734;&#9734;&#9733;&#9733;&#9733;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="os-definitions">
+            <h2>Operating System Definitions</h2>
+            <dl>
+                <dt>Android</dt>
+                <dd>Android is a mobile operating system based on a modified version of the Linux kernel and other open source software, designed primarily for touchscreen mobile devices such as smartphones and tablets.</dd>
+                <dt>macOs</dt>
+                <dd>It is the primary operating system for Apple's Mac computers. Within the market of desktop and laptop computers it is the second most widely used desktop OS, after Microsoft Windows and ahead of Chrome OS.</dd>
+                <dt>watchOS</dt>
+                <dd>watchOS is the operating system of the Apple Watch, developed by Apple Inc.</dd>
+                <dt>Windows</dt>
+                <dd>Microsoft Windows, commonly referred to as Windows, is a group of several proprietary graphical operating system families, all of which are developed and marketed by Microsoft.</dd>
+            </dl>
+            <p><em>Information gathered from <strong><a href="https://en.wikipedia.org/">Wikipedia</a></strong></em></p>
+        </section>
+
+        <section id="styling-examples">
+            <h2>Styling Examples</h2>
+            <div>If you are interested in front-end development, here is a code snippet from our stylesheet </div>
+            <pre>
+                <code>
+    nav {
+        border-bottom: 1px solid black;
+    }
+                </code>
+            </pre>
+        </section>
+
+        <section id="return-policy">
+            <h2>Return Policy</h2>
+            <div>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                </p>
+                <p>
+                    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                    nd more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+<!--
+    == Browser compatibility report ==
+    This page has been tested and is confirmed to be working with the following browsers:
+    - Google Chrome v97
+    - Safari v14
+    - Firefox v95
+    - Opera v82
+-->
