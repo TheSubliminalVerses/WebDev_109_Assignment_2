@@ -295,12 +295,12 @@ div.table-footnote a:visited {
     color: #339966;
 }
 
-table .table-menu {
+table.table-menu {
     display: flex;
     justify-content: center;
 }
 
-table .table-menu input[type="button"] {
+table.table-menu input[type="button"] {
     padding: 10px;
     margin-left: 10px;
     margin-right: 10px;
@@ -317,11 +317,23 @@ table .table-menu input[type="button"] {
 /* END */
 
 /* EXTRAS */
-.danger {
+input.danger {
+    padding: 5px 10px 5px 10px;
+    border: none;
     background-color: lightcoral;
+    border-radius: 5px;
+    transition: 500ms linear;
+    cursor: pointer;
 }
 
-button[type="submit"] {
+input.danger:hover {
+    border-radius: 25px;
+    border-bottom: 2px solid orangered;
+    box-shadow: 1px 5px 10px #ccc;
+    color: #555;
+}
+
+input[type="submit"] {
     padding: 5px 10px 5px 10px;
     border: none;
     background-color: #ffcc99;
@@ -329,7 +341,7 @@ button[type="submit"] {
     transition: 500ms linear;
 }
 
-button[type="submit"]:hover {
+input[type="submit"]:hover {
     border-radius: 25px;
     border-bottom: 2px solid #db9833;
     cursor: pointer;

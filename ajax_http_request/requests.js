@@ -55,7 +55,7 @@ const addInputError = (inputName, message) => {
 // When a new product is added, a URI is returned for the new product.
 // This product needs to be fetched so it can be added to the product table
 const fetchSingleProductByURI = (URI) => {
-    $.ajax({ url: URI }).done((product) => {
+    $.ajax({ url: URI, method: "GET" }).done((product) => {
         addProductToTable(product)
     }).catch((error) => {
         showMessage($('#request-error'), `Failed to fetch product! ${error.responseJSON.Error}`)
@@ -63,8 +63,18 @@ const fetchSingleProductByURI = (URI) => {
 }
 
 const addProductToTable = (product) => {
-    console.log('Product', product)
-
+    $("tbody.table-body").append(`<tr>
+        <td>${product["brand"]}</td>
+        <td>${product["model"]}</td>
+        <td>${product["os"]}</td>
+        <td>${product["screensize"]}</td>
+        <td class="product-image">
+            <figure>
+                <img src=${product["image"]} alt=${product["brand"]} ${product["model"]}
+                <figcaption>${product["brand"]} ${product["model"]}</figcaption>
+            </figure>
+        </td>
+    </tr>`)
 }
 
 $('#add-product-form').submit((form) => {
