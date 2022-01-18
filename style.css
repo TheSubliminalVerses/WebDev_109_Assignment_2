@@ -189,6 +189,35 @@ div.contact ul {
 /* END */
 
 /* Tables */
+/* A LINKS IN TH */
+a.order:link {
+    text-decoration: none;
+    color: #0099ff;
+    transition: 500ms linear;
+}
+
+a.order:hover {
+    color: #9933ff;
+}
+
+a.order:link::before {
+    content: "";
+    position: relative;
+    display: block;
+    width: 0;
+    height: 2px;
+    top: 23px;
+    background-color: #0099ff;
+    transition: 500ms ease-in;
+}
+
+a.order:hover::before {
+    width: 80%;
+    background-color: #9933ff;
+}
+
+/* END */
+
 table {
     margin-left: auto;
     margin-right: auto;
