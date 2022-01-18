@@ -132,6 +132,4 @@ $('#add-product-form').submit((form) => {
     }).catch((error) => {
         showMessage($('#request-error'), `Failed to add product! ${error.responseJSON.Error}`)
     })
-
-    return false
 })
