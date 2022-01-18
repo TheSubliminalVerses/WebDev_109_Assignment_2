@@ -91,12 +91,32 @@ nav li {
 }
 
 /* main */
-div.content {
-    background-color: #eee;
-    border-bottom-right-radius: 12px;
-    border-bottom-left-radius: 12px;
-    padding: 10px 5px 10px 5px;
-    transition: 500ms linear;
+
+/* Misc */
+.top-list-container {
+    border: 0px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.top-list-container h3 {
+    border-bottom: 2px solid lightblue;
+    padding: 10px;
+}
+
+.top-list-container ol {
+    padding: 10px;
+    margin-left: 50px;
+}
+
+#requestFeedback {
+    padding: 10px 20px;
+}
+
+#requestError {
+    padding: 10px 20px;
+    color: red;
 }
 
 /* Sections */
@@ -244,6 +264,19 @@ div.table-footnote a:hover {
 
 div.table-footnote a:visited {
     color: #339966;
+}
+
+table .table-menu {
+    display: flex;
+    justify-content: center;
+}
+
+table .table-menu input[type="button"] {
+    padding: 10px;
+    background-color: lightcoral;
+    font-weight: 700;
+    border-radius: 5px;
+    text-align: center;
 }
 /* END */
 
