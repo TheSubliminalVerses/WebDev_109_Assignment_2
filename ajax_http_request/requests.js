@@ -64,7 +64,7 @@ const fetchSingleProductByURI = (URI) => {
 
 const addProductToTable = (product) => {
     console.log('Product', product)
-    // @todo, add product to table
+
 }
 
 $('#add-product-form').submit((form) => {
