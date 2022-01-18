@@ -18,8 +18,7 @@
     <!-- reserved for *.loader.js file -->
     <!-- <script defer ajax_http_request="loaderJS"></script> -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-    <script defer src="./src/main.js"></script>
-    <script defer src="./ajax_http_request/requests.js"></script>
+    <script defer src="ajax_http_request/requests.js"></script>
 </head>
 <body>
     <header>
@@ -30,11 +29,13 @@
         <div class="header-row">
             <div class="contact">
                 <h2>Where can you find us?</h2>
-                <ul class="no-bullets">
-                    <li>Address: <strong>2nd street, NewYork</strong></li>
-                    <li>Phone: <a href="tel:+1311255464">+1 311 255 464</a></li>
-                    <li>Contact: <a href="mailto:astore@support.com">astore@support.com</a></li>
-                </ul>
+                <address>
+                    <ul class="no-bullets">
+                        <li>Address: <strong>2nd street, NewYork</strong></li>
+                        <li>Phone: <a href="tel:+1311255464">+1 311 255 464</a></li>
+                        <li>Contact: <a href="mailto:astore@support.com">astore@support.com</a></li>
+                    </ul>
+                </address>
             </div>
             <div class="shopping-basket">
                 <h2>Shopping basket</h2>
@@ -54,10 +55,10 @@
         </nav>
     </header>
 
-    <div class="shop-main">
+    <main class="shop-main">
         <section class="top-selling">
-            <div>
-                <h2>Top Selling Categories</h2>
+            <div class="top-list-container">
+                <h3>Top Selling Categories</h3>
                 <ol>
                     <li>Smartphones</li>
                     <li>Laptops</li>
@@ -66,8 +67,8 @@
                     <li>Smartphone Covers</li>
                 </ol>
             </div>
-            <div>
-                <h2>Top Selling Brands</h2>
+            <div class="top-list-container">
+                <h3>Top Selling Brands</h3>
                 <ol>
                     <li>Apple</li>
                     <li>Samsung</li>
@@ -78,27 +79,26 @@
 
         <section  class="top-selling-products" id="top-selling-products">
             <h2>Top Selling Products</h2>
-
-            <form action="https://wt.ops.labs.vu.nl/api22/6b1e7103" method="post" id="add-product"></form>
+            <label for="order">Order By?</label>
+            <select name="order" id="order">
+                <option value="by-product-name">Product Brand</option>
+                <option value="by-product-model">Product Model</option>
+                <option value="by-product-os">Product OS</option>
+                <option value="by-product-screen_size">Screen Size</option>
+            </select>
+            <form action="#" method="post" id="add-product-form"></form>
             <table>
                 <caption>Product table</caption>
                 <thead>
                     <tr>
-                        <th><a href="javascript:void(0)" class="order">Brand</a></th>
-                        <th><a href="javascript:void(0)" class="order">Model</a></th>
-                        <th><abbr title="Operating System"><a href="javascript:void(0)" class="order">OS</a></abbr></th>
-                        <th><a href="javascript:void(0)" class="order">Screen Size</a></th>
+                        <th>brand</th>
+                        <th>model</th>
+                        <th><abbr title="Operating System">os</abbr></th>
+                        <th>screensize</th>
                         <th>image</th>
                     </tr>
                 </thead>
                 <tbody id="body-1">
-                    <tr class="input-row">
-                        <td><input name="brand" type="text" placeholder="Example: Apple" form="add-product" required></td>
-                        <td><input name="model" type="text" placeholder="Example: iPhone 12" form="add-product" required></td>
-                        <td><input name="os" type="text" placeholder="Example: iOS" form="add-product" required></td>
-                        <td><input name="screensize" type="number" form="add-product" required><abbr title="Inches">in</abbr></td>
-                        <td><input name="image" type="file" form="add-product" required><button type="submit" form="add-product">Add Product</button></td>
-                    </tr>
                     <tr>
                         <td>Apple</td>
                         <td>iPhone 13</td>
@@ -160,6 +160,35 @@
                         </td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr class="input-row">
+                        <td>
+                            <input name="brand" type="text" placeholder="Example: Apple" form="add-product-form" required>
+                        </td>
+                        <td>
+                            <input name="model" type="text" placeholder="Example: iPhone 12" form="add-product-form" required>
+                        </td>
+                        <td>
+                            <input name="os" type="text" placeholder="Example: iOS" form="add-product-form" required>
+                        </td>
+                        <td>
+                            <input name="screensize" type="number" form="add-product-form" max="100" required><abbr title="Inches">in</abbr>
+                        </td>
+                        <td>
+                            <input name="image" type="url" form="add-product-form" placeholder="https://..." required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <div class="table-menu">
+                                <input type="button" value="Add Product" type="submit" form="add-product-form" id="add-product-button">
+                                <input type="button" value="Reset table" class="danger" id="reset-product-table-button">
+                                <span id="request-feedback"></span>
+                                <span id="request-error"></span>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
             <div class="table-footnote"><em>All specifications on our products are gathered from the respected wholesaler. We take no responsibility for inaccurate data.</em></div>
             <div class="table-footnote">For <abbr title="Operating System">OS</abbr> definitions click <a href="#os-definitions">here</a>.</div>
@@ -238,7 +267,8 @@
                 </code>
             </pre>
         </section>
-
+    </main>
+    <footer>
         <section id="return-policy">
             <h2>Return Policy</h2>
             <div>
@@ -254,7 +284,7 @@
                 </p>
             </div>
         </section>
-    </div>
+    </footer>
 </body>
 </html>
 <!--
