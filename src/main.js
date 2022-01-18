@@ -1,26 +1,26 @@
 const API_KEY = '6b1e7103'
 
-$("div.intro").append("<p>This is a jquery test!</p>").append("<p>This is another paragraph!</p>")
-
-$("input[type='text']").keyup(function () {
-    if (isNaN(parseInt(this.value))) {
-        this.style.border = "2px solid red"
-    } else if (!isNaN(parseInt(this.value)) && this.style.border === "2px solid red") {
-        this.style.border = "0 solid red"
-    }
-}).blur(function () {
-    this.style.border = "0 solid red"
-})
-
-$("input[type='number']").keyup(function () {
-    if (isNaN(parseInt(this.value))) {
-        this.style.border = "2px solid red"
-    } else if (!isNaN(parseInt(this.value)) && this.style.border === "2px solid red") {
-        this.style.border = "0 solid red"
-    }
-}).blur(function () {
-    this.style.border = "0 solid red"
-})
+// $("div.intro").append("<p>This is a jquery test!</p>").append("<p>This is another paragraph!</p>")
+//
+// $("input[type='text']").keyup(function () {
+//     if (isNaN(parseInt(this.value))) {
+//         this.style.border = "2px solid red"
+//     } else if (!isNaN(parseInt(this.value)) && this.style.border === "2px solid red") {
+//         this.style.border = "0 solid red"
+//     }
+// }).blur(function () {
+//     this.style.border = "0 solid red"
+// })
+//
+// $("input[type='number']").keyup(function () {
+//     if (isNaN(parseInt(this.value))) {
+//         this.style.border = "2px solid red"
+//     } else if (!isNaN(parseInt(this.value)) && this.style.border === "2px solid red") {
+//         this.style.border = "0 solid red"
+//     }
+// }).blur(function () {
+//     this.style.border = "0 solid red"
+// })
 
 $('#reset-product-table-button').click(() => {
     let confirm = window.confirm('Are you sure? All data will be lost.')
@@ -47,24 +47,8 @@ const showMessage = ($elm, message) => {
     $elm.text(message).fadeIn(500).delay(2500).fadeOut(500);
 }
 
-// Add an error element after an input element
 const addInputError = (inputName, message) => {
     $(`<span class="input-error">${message}</span>`).insertAfter(`input[name="${inputName}"]`)
-}
-
-// When a new product is added, a URI is returned for the new product.
-// This product needs to be fetched so it can be added to the product table
-const fetchSingleProductByURI = (URI) => {
-    $.ajax({ url: URI }).done((product) => {
-        addProductToTable(product)
-    }).catch((error) => {
-        showMessage($('#request-error'), `Failed to fetch product! ${error.responseJSON.Error}`)
-    })
-}
-
-const addProductToTable = (product) => {
-    console.log('Product', product)
-    // @todo, add product to table
 }
 
 $('#add-product-form').submit((form) => {
@@ -125,7 +109,6 @@ $('#add-product-form').submit((form) => {
         data: product
     }).done((response) => {
         if (response.URI) {
-            fetchSingleProductByURI(response.URI)
             showMessage($('#request-feedback'), 'Product added successful!')
             $("#add-product-form").trigger("reset");
         }
