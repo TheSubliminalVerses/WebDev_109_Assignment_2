@@ -110,11 +110,11 @@ nav li {
     margin-left: 50px;
 }
 
-#requestFeedback {
+#request-feedback {
     padding: 10px 20px;
 }
 
-#requestError {
+#request-error {
     padding: 10px 20px;
     color: red;
 }
@@ -273,14 +273,25 @@ table .table-menu {
 
 table .table-menu input[type="button"] {
     padding: 10px;
-    background-color: lightcoral;
+    margin-left: 10px;
+    margin-right: 10px;
     font-weight: 700;
     border-radius: 5px;
     text-align: center;
 }
+
+.input-row .input-error {
+    display: inline-block;
+    font-size: 12px;
+    color: red;
+}
 /* END */
 
 /* EXTRAS */
+.danger {
+    background-color: lightcoral;
+}
+
 button[type="submit"] {
     padding: 5px 10px 5px 10px;
     border: none;

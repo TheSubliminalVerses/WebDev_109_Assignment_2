@@ -2,12 +2,12 @@
 <html lang="en">
 <!--
     This webpage is written by Mani Gudvardarson and Michael Adrian Polesensky
-    for Assignment 1 in Web Technology at VU University Amsterdam.
+    for Assignment 2 in Web Technology at VU University Amsterdam.
 
     Coordinator: J.R . van Ossenbruggen
     TA: Mithat Ozgun
     Group: 109
-    Date: 13.1.2022
+    Date: 18.1.2022
  -->
 <head>
     <meta charset="UTF-8">
@@ -15,8 +15,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./style.css" type="text/css">
     <title>Awesome Shop (WIP title)</title>
-    <!-- reserved for *.loader.js file -->
-    <!-- <script defer src="loaderJS"></script> -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script defer src="./src/main.js"></script>
 </head>
@@ -80,7 +78,7 @@
         <section  class="top-selling-products" id="top-selling-products">
             <h2>Top Selling Products</h2>
 
-            <form action="https://wt.ops.labs.vu.nl/api22/6b1e7103" method="post" id="add-product"></form>
+            <form action="#" method="post" id="add-product-form"></form>
             <table>
                 <caption>Product table</caption>
                 <thead>
@@ -156,18 +154,29 @@
                 </tbody>
                 <tfoot>
                     <tr class="input-row">
-                        <td><input name="brand" type="text" placeholder="Example: Apple" form="add-product" required></td>
-                        <td><input name="model" type="text" placeholder="Example: iPhone 12" form="add-product" required></td>
-                        <td><input name="os" type="text" placeholder="Example: iOS" form="add-product" required></td>
-                        <td><input name="screensize" type="number" form="add-product" required><abbr title="Inches">in</abbr></td>
-                        <td><input name="image" type="url" form="add-product" placeholder="https://..." required><input type="submit" form="add-product" value="Add Product"></td>
+                        <td>
+                            <input name="brand" type="text" placeholder="Example: Apple" form="add-product-form" required>
+                        </td>
+                        <td>
+                            <input name="model" type="text" placeholder="Example: iPhone 12" form="add-product-form" required>
+                        </td>
+                        <td>
+                            <input name="os" type="text" placeholder="Example: iOS" form="add-product-form" required>
+                        </td>
+                        <td>
+                            <input name="screensize" type="number" form="add-product-form" max="100" required><abbr title="Inches">in</abbr>
+                        </td>
+                        <td>
+                            <input name="image" type="url" form="add-product-form" placeholder="https://..." required>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="5">
                             <div class="table-menu">
-                                <input type="button" value="Reset table" id="resetProductTableButton">
-                                <span id="requestFeedback"></span>
-                                <span id="requestError"></span>
+                                <input type="button" value="Add Product" type="submit" form="add-product-form" id="add-product-button">
+                                <input type="button" value="Reset table" class="danger" id="reset-product-table-button">
+                                <span id="request-feedback"></span>
+                                <span id="request-error"></span>
                             </div>
                         </td>
                     </tr>
