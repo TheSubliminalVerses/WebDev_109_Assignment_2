@@ -1,21 +1,59 @@
-$("div.intro").append("<p>This is a jquery test!</p>").append("<p>This is another paragraph!</p>")
+const order = document.getElementById("order")
 
-$("input[type='text']").keyup(function () {
-    if (isNaN(parseInt(this.value))) {
-        this.style.border = "2px solid red"
-    } else if (!isNaN(parseInt(this.value)) && this.style.border === "2px solid red") {
-        this.style.border = "0 solid red"
+order.addEventListener("change", function () {
+    let orderBy = order.options[order.selectedIndex].text
+    let tableBody = document.getElementById("body-1")
+    let children = []
+
+    for (let child of tableBody.children) {
+        if (child.getAttribute("class") !== "input-row") {
+            children.push(child)
+        }
     }
-}).blur(function () {
-    this.style.border = "0 solid red"
+
+    switch (orderBy) {
+        case "Product Brand":
+            sortElementChild(children, 0, tableBody, 0)
+            break
+        case "Product Model":
+            sortElementChild(children, 1, tableBody, 0)
+            break
+        case "Product OS":
+            sortElementChild(children, 2, tableBody, 0)
+            break
+        case "Screen Size":
+            sortElementChild(children, 3, tableBody, 0)
+            break
+        default:
+            console.warn("No such option in the list!!!")
+    }
 })
 
-$("input[type='number']").keyup(function () {
-    if (isNaN(parseInt(this.value))) {
-        this.style.border = "2px solid red"
-    } else if (!isNaN(parseInt(this.value)) && this.style.border === "2px solid red") {
-        this.style.border = "0 solid red"
+/**
+ * Function for sorting child elements of the table.
+ * @param {Element[]} children
+ * @param {number} index
+ * @param {Element} parentElement
+ * @param {number} Start
+ * @returns {void}
+ */
+function sortElementChild(children, index, parentElement, Start) {
+    children.sort((a, b) => {
+        if (a.children[index].innerText[Start].toLowerCase() > b.children[index].innerText[Start].toLowerCase()) {
+            return 1
+        } else if (a.children[index].innerText[Start].toLowerCase() < b.children[index].innerText[Start].toLowerCase()) {
+            return -1
+        }
+
+        return 0
+    })
+
+    for (let element of children) {
+        parentElement.removeChild(element)
     }
-}).blur(function () {
-    this.style.border = "0 solid red"
-})
+
+    children.forEach(child => {
+        parentElement.appendChild(child)
+        console.log(child)
+    })
+}

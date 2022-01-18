@@ -77,7 +77,13 @@
 
         <section  class="top-selling-products" id="top-selling-products">
             <h2>Top Selling Products</h2>
-
+            <label for="order">Order By?</label>
+            <select name="order" id="order">
+                <option value="by-product-name">Product Brand</option>
+                <option value="by-product-model">Product Model</option>
+                <option value="by-product-os">Product OS</option>
+                <option value="by-product-screen_size">Screen Size</option>
+            </select>
             <form action="https://wt.ops.labs.vu.nl/api22/6b1e7103" method="post" id="add-product"></form>
             <table>
                 <caption>Product table</caption>
@@ -90,7 +96,7 @@
                         <th>image</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="body-1">
                     <tr class="input-row">
                         <td><input name="brand" type="text" placeholder="Example: Apple" form="add-product" required></td>
                         <td><input name="model" type="text" placeholder="Example: iPhone 12" form="add-product" required></td>

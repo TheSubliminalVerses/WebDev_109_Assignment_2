@@ -245,6 +245,14 @@ div.table-footnote a:hover {
 div.table-footnote a:visited {
     color: #339966;
 }
+
+thead tr th {
+    cursor: pointer;
+}
+
+thead tr th.active {
+    color: lightseagreen;
+}
 /* END */
 
 /* EXTRAS */
