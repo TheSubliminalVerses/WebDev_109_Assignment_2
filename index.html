@@ -29,11 +29,13 @@
         <div class="header-row">
             <div class="contact">
                 <h2>Where can you find us?</h2>
-                <ul class="no-bullets">
-                    <li>Address: <strong>2nd street, NewYork</strong></li>
-                    <li>Phone: <a href="tel:+1311255464">+1 311 255 464</a></li>
-                    <li>Contact: <a href="mailto:astore@support.com">astore@support.com</a></li>
-                </ul>
+                <address>
+                    <ul class="no-bullets">
+                        <li>Address: <strong>2nd street, NewYork</strong></li>
+                        <li>Phone: <a href="tel:+1311255464">+1 311 255 464</a></li>
+                        <li>Contact: <a href="mailto:astore@support.com">astore@support.com</a></li>
+                    </ul>
+                </address>
             </div>
             <div class="shopping-basket">
                 <h2>Shopping basket</h2>
@@ -53,10 +55,10 @@
         </nav>
     </header>
 
-    <div class="shop-main">
+    <main class="shop-main">
         <section class="top-selling">
-            <div>
-                <h2>Top Selling Categories</h2>
+            <div class="top-list-container">
+                <h3>Top Selling Categories</h3>
                 <ol>
                     <li>Smartphones</li>
                     <li>Laptops</li>
@@ -65,8 +67,8 @@
                     <li>Smartphone Covers</li>
                 </ol>
             </div>
-            <div>
-                <h2>Top Selling Brands</h2>
+            <div class="top-list-container">
+                <h3>Top Selling Brands</h3>
                 <ol>
                     <li>Apple</li>
                     <li>Samsung</li>
@@ -91,13 +93,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="input-row">
-                        <td><input name="brand" type="text" placeholder="Example: Apple" form="add-product" required></td>
-                        <td><input name="model" type="text" placeholder="Example: iPhone 12" form="add-product" required></td>
-                        <td><input name="os" type="text" placeholder="Example: iOS" form="add-product" required></td>
-                        <td><input name="screensize" type="number" form="add-product" required><abbr title="Inches">in</abbr></td>
-                        <td><input name="image" type="file" form="add-product" required><button type="submit" form="add-product">Add Product</button></td>
-                    </tr>
                     <tr>
                         <td>Apple</td>
                         <td>iPhone 13</td>
@@ -159,6 +154,24 @@
                         </td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr class="input-row">
+                        <td><input name="brand" type="text" placeholder="Example: Apple" form="add-product" required></td>
+                        <td><input name="model" type="text" placeholder="Example: iPhone 12" form="add-product" required></td>
+                        <td><input name="os" type="text" placeholder="Example: iOS" form="add-product" required></td>
+                        <td><input name="screensize" type="number" form="add-product" required><abbr title="Inches">in</abbr></td>
+                        <td><input name="image" type="url" form="add-product" placeholder="https://..." required><input type="submit" form="add-product" value="Add Product"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <div class="table-menu">
+                                <input type="button" value="Reset table" id="resetProductTableButton">
+                                <span id="requestFeedback"></span>
+                                <span id="requestError"></span>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
             <div class="table-footnote"><em>All specifications on our products are gathered from the respected wholesaler. We take no responsibility for inaccurate data.</em></div>
             <div class="table-footnote">For <abbr title="Operating System">OS</abbr> definitions click <a href="#os-definitions">here</a>.</div>
@@ -237,23 +250,22 @@
                 </code>
             </pre>
         </section>
-
-        <section id="return-policy">
-            <h2>Return Policy</h2>
-            <div>
-                <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                </p>
-                <p>
-                    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                    nd more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
-            </div>
-        </section>
     </div>
+    <section id="return-policy">
+        <h2>Return Policy</h2>
+        <div>
+            <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            </p>
+            <p>
+                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                nd more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
+        </div>
+    </section>
 </body>
 </html>
 <!--
