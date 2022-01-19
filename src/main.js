@@ -1,5 +1,19 @@
 const linkElements = document.getElementsByClassName("order")
 const typewrite = document.getElementById("type")
+const aboutBtn = document.getElementById("about")
+const closeBtn = document.getElementById("close")
+
+aboutBtn.addEventListener("click", function () {
+    const box = document.getElementById("box")
+
+    box.style.animation = "zoomIn 550ms linear forwards"
+})
+
+closeBtn.addEventListener("click", function () {
+    const box = document.getElementById("box")
+
+    box.style.animation = "zoomOut 550ms linear forwards"
+})
 
 window.addEventListener("load", function () {
     bind("click", linkElements, [function () {
