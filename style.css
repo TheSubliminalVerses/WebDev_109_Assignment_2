@@ -59,8 +59,66 @@ div.intro ul {
     padding-left: 15px;
 }
 
-.no-bullets {
+ul.no-bullets {
     list-style: none;
+}
+
+ul.no-bullets li a {
+    transition: 200ms linear;
+}
+
+ul.no-bullets li a#tel::after {
+    content: "\f879";
+    position: relative;
+    display: inline-block;
+    font-family: "Font Awesome 5 Free", sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    left: 0;
+    transition: 500ms linear;
+    color: transparent;
+}
+
+ul.no-bullets li a#tel:hover::after {
+    color: #ff9933;
+    font-size: 20px;
+    left: 10px;
+}
+
+ul.no-bullets li a#email::after {
+    content: "\f0e0";
+    position: relative;
+    display: inline-block;
+    font-family: "Font Awesome 5 Free", sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    left: 0;
+    top: 2px;
+    transition: 500ms linear;
+    color: transparent;
+}
+
+ul.no-bullets li a#email:hover::after {
+    color: #ff9933;
+    font-size: 20px;
+    left: 10px;
+}
+
+ul.no-bullets li a:link {
+    color: #0099ff;
+}
+
+ul.no-bullets li a:hover {
+    color: #ff9933;
+    font-size: 17px;
 }
 
 nav {
@@ -349,6 +407,21 @@ input[type="submit"]:hover {
     color: #555;
 }
 
+p#type {
+    animation: colorAnimation 15s ease-in infinite;
+}
+
+p#type::after {
+    content: "|";
+    position: relative;
+    display: inline-block;
+    top: 1px;
+    right: 4px;
+    color: black;
+    font-size: 20px;
+    animation: flash 1s linear infinite;
+}
+
 /* INPUTS */
 input[type="text"] {
     border: none;
@@ -376,6 +449,7 @@ input[type="number"] {
     padding-bottom: 2px;
     padding-left: 12px;
     transition: 500ms linear;
+    margin-right: 8px;
 }
 
 input[type="number"]:hover {
@@ -412,7 +486,7 @@ section#os-definitions p a:visited {
 
 /* Media queries */
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 800px) {
     * {font-size: 12px}
     header {margin-bottom: 5px}
     div.intro {
@@ -444,11 +518,13 @@ section#os-definitions p a:visited {
     }
 
     ::-webkit-scrollbar {
-        display: none;
+        width: 5px;
+        height: 5px;
     }
 
     ::-webkit-scrollbar-thumb {
-        display: none;
+        width: 5px;
+        height: 5px;
     }
 }
 
@@ -482,6 +558,8 @@ section#os-definitions p a:visited {
 ::-webkit-scrollbar {
     background-color: #ff993355;
     border-radius: 12px;
+    width: 10px;
+    height: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -494,4 +572,20 @@ section#os-definitions p a:visited {
     background-color: #ff993377;
 }
 
+/* END */
+
+/* ANIMATIONS */
+@keyframes colorAnimation {
+    0% {color: black}
+    25% {color: #33cc33}
+    50% {color: #00ff99}
+    75% {color: #33cc33}
+    100% {color: black}
+}
+
+@keyframes flash {
+    0% {color: black}
+    50% {color: transparent}
+    100% {color: black}
+}
 /* END */

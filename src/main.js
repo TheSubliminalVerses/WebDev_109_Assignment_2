@@ -1,4 +1,5 @@
 const linkElements = document.getElementsByClassName("order")
+const typewrite = document.getElementById("type")
 
 window.addEventListener("load", function () {
     bind("click", linkElements, [function () {
@@ -22,6 +23,8 @@ window.addEventListener("load", function () {
 
         orderElementList(children, 3, parentElement, 0)
     }])
+
+    typePhrase()
 })
 
 /**
@@ -78,4 +81,31 @@ function makeElementArray(parentElement) {
     }
 
     return arr
+}
+
+/**
+ * @function Sleep - pauses the execution of an async function
+ * @param {number} timeInMs
+ * @returns {Promise<void>}
+ */
+async function sleep(timeInMs) {
+    return new Promise(resolve => setInterval(resolve, timeInMs))
+}
+
+/**
+ * @function typePhrase - typing animation
+ * @returns {void}
+ */
+async function typePhrase() {
+    let toType = typewrite.getAttribute("phrase")
+    let str = ""
+
+    for (let char of toType) {
+        str += char
+        typewrite.innerText = str
+
+        await sleep(Math.floor(Math.random() * 1500))
+    }
+
+    typePhrase()
 }
