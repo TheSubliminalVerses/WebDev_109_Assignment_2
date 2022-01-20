@@ -356,17 +356,18 @@ div.contact ul {
 
 /* Tables */
 /* A LINKS IN TH */
-a.order:link {
+span.order {
     text-decoration: none;
     color: #0099ff;
     transition: 500ms linear;
+    cursor: pointer ;
 }
 
-a.order:hover {
+span.order:hover {
     color: #9933ff;
 }
 
-a.order:link::before {
+span.order::before {
     content: "";
     position: relative;
     display: block;
@@ -377,7 +378,7 @@ a.order:link::before {
     transition: 500ms ease-in;
 }
 
-a.order:hover::before {
+span.order:hover::before {
     width: 80%;
     background-color: #9933ff;
 }
