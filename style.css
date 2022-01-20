@@ -739,23 +739,24 @@ section#return-policy div.heading h2 {
         padding: 1px 2px 1px 2px;
         font-size: 10px;
     }
-
     ::-webkit-scrollbar {
         width: 3px;
         height: 3px;
     }
-
     ::-webkit-scrollbar-thumb {
         width: 3px;
         height: 3px;
     }
-
     table.reviews .score {
         font-size: 15px;
     }
-
     table.product-table > tfoot > tr > td {
         width: 100vw !important;
+    }
+    div.basket-upper h2#basket-title {font-size: 14px}
+    div.basket-upper h2#basket-title::after {
+        font-size: 14px;
+        padding: 5px 5px 5px 5px;
     }
 }
 
