@@ -1,3 +1,13 @@
+/**
+ * This webpage is written by Mani Gudvardarson and Michael Adrian Polesensky
+ * for Assignment 2 in Web Technology at VU University Amsterdam.
+ *
+ * Coordinator: J.R . van Ossenbruggen
+ * TA: Mithat Ozgun
+ * Group: 109
+ * Date: 20.1.2022
+ */
+
 const API_KEY = '6b1e7103'
 
 // $("div.intro").append("<p>This is a jquery test!</p>").append("<p>This is another paragraph!</p>")
@@ -91,6 +101,7 @@ $('#add-initial-data-button').on('click', () => {
     })
 })
 
+// Create a single product with a AJAX call to the API.
 const createProduct = async (product) => {
     const createUrl = `https://wt.ops.labs.vu.nl/api22/${API_KEY}`
 
