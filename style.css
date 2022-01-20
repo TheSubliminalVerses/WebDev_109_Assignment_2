@@ -663,8 +663,13 @@ section#return-policy div.heading h2 {
         font-size: 12px;
         padding-bottom: 0;
     }
+    table tbody tr {width: 10%; font-size: 10px; gap: 0; padding: 0; margin: 0;}
+    table tbody tr td {width: 10%; font-size: 10px; gap: 0; padding: 0; margin: 0}
+    table tbody tr td.product-image img {width: 12%; height: 12%}
+    table tbody tr td.product-image figcaption {font-size: 10px}
     table.top-selling-products th, td {padding: 2px}
     table.top-selling-products img {height: 50px}
+    table tbody {column-width: 0}
     button[type="submit"] {
         padding: 2px 5px 2px 5px;
         font-size: 10px;
