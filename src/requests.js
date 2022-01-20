@@ -149,6 +149,7 @@ const addProductToTable = (product) => {
     </tr>`)
 }
 
+// form submit handler.
 $('#add-product-form').on('submit', (form) => {
     form.preventDefault();
     $('.input-error').remove()
@@ -211,6 +212,7 @@ $('#add-product-form').on('submit', (form) => {
     })
 })
 
+// Restores the table with the data from the distant database.
 $("input.restore").on("click", function () {
     removeElements()
     $.ajax({
