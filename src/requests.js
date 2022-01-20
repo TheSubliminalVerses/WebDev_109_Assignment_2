@@ -211,7 +211,8 @@ $('#add-product-form').on('submit', (form) => {
     })
 })
 
-$("input.restore").click(function () {
+$("input.restore").on("click", function () {
+    removeElements()
     $.ajax({
         url: "https://wt.ops.labs.vu.nl/api22/6b1e7103",
         method: "GET",
@@ -235,3 +236,19 @@ $("input.restore").click(function () {
         }
     })
 })
+
+/**
+ * @function removeElements - Removes the table elements before updating the table.
+ * @returns {void}
+ */
+function removeElements() {
+    let parent = document.getElementById("body-1")
+
+    if (parent.children.length > 0) {
+        let arr = Array.from(parent.children)
+
+        for (let child of arr) {
+            parent.removeChild(child)
+        }
+    }
+}
