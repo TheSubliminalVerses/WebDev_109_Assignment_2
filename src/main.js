@@ -36,6 +36,21 @@ window.addEventListener("load", function () {
         let children = makeElementArray(parentElement)
 
         orderElementList(children, 3, parentElement, 0)
+    }, function () {
+        let parentElement = document.getElementById("body-2")
+        let children = makeElementArray(parentElement)
+
+        orderElementList(children, 1, parentElement, 0)
+    }, function () {
+        let parentElement = document.getElementById("body-2")
+        let children = makeElementArray(parentElement)
+
+        orderElementList(children, 2, parentElement, 0)
+    }, function () {
+        let parentElement = document.getElementById("body-2")
+        let children = makeElementArray(parentElement)
+
+        orderElementList(children, 3, parentElement, 0)
     }])
 
     typePhrase()
@@ -50,13 +65,23 @@ window.addEventListener("load", function () {
  */
 function orderElementList(children, index, parentElement, Start) {
     children.sort((a, b) => {
-        if (a.children[index].innerText[Start].toLowerCase() > b.children[index].innerText[Start].toLowerCase()) {
-            return 1
-        } else if (a.children[index].innerText[Start].toLowerCase() < b.children[index].innerText[Start].toLowerCase()) {
-            return -1
-        }
+        if (a.children[index].hasAttribute('data-score') && b.children[index].hasAttribute('data-score')) {
+            if (a.children[index].getAttribute('data-score') > b.children[index].getAttribute('data-score')) {
+                return -1
+            } else if (a.children[index].getAttribute('data-score') < b.children[index].getAttribute('data-score')) {
+                return 1
+            }
 
-        return 0
+            return 0
+        } else {
+            if (a.children[index].innerText[Start].toLowerCase() > b.children[index].innerText[Start].toLowerCase()) {
+                return 1
+            } else if (a.children[index].innerText[Start].toLowerCase() < b.children[index].innerText[Start].toLowerCase()) {
+                return -1
+            }
+
+            return 0
+        }
     })
 
     for (let child of children) {
