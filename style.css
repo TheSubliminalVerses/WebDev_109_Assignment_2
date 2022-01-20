@@ -663,9 +663,37 @@ section#return-policy div.heading h2 {
         font-size: 12px;
         padding-bottom: 0;
     }
-    table tbody tr {width: 10%; font-size: 10px; gap: 0; padding: 0; margin: 0;}
-    table tbody tr td {width: 10%; font-size: 10px; gap: 0; padding: 0; margin: 0}
-    table tbody tr td.product-image img {width: 12%; height: 12%}
+    table tbody tr {
+        width: 10%;
+        font-size: 10px;
+        gap: 50px;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        background-color: transparent;
+    }
+    table tbody tr td {
+        width: 10%;
+        font-size: 10px;
+        gap: 0;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        background-color: transparent;
+    }
+    thead tr {
+        width: 10%;
+        display: flex;
+        gap: 20px;
+    }
+
+
+
+    table.table-1 {
+        display: table;
+        gap: 50px;
+    }
+    table tbody tr td.product-image img {width: 50%; height: 50%}
     table tbody tr td.product-image figcaption {font-size: 10px}
     table.top-selling-products th, td {padding: 2px}
     table.top-selling-products img {height: 50px}
@@ -691,12 +719,15 @@ section#return-policy div.heading h2 {
         padding: 1px 2px 1px 2px;
         font-size: 10px;
     }
-
+    div.basket-upper h2#basket-title {font-size: 14px}
+    div.basket-upper h2#basket-title::after {
+        font-size: 14px;
+        padding: 5px 5px 5px 5px
+    }
     ::-webkit-scrollbar {
         width: 3px;
         height: 3px;
     }
-
     ::-webkit-scrollbar-thumb {
         width: 3px;
         height: 3px;
