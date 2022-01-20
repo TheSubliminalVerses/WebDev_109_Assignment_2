@@ -101,6 +101,36 @@ $('#create-demo-data-button').on('click', () => {
     })
 })
 
+const fetchProducts = async () => {
+    $.ajax({
+        url: `https://wt.ops.labs.vu.nl/api22/${API_KEY}`,
+        method: "GET",
+        responseType: "JSON"
+    }).done(response => {
+        for (let i = 0; i < response.length; i++) {
+            $("tbody.table-body").append(`
+                <tr>
+                    <td>${response[i]['brand']}</td>
+                    <td>${response[i]['model']}</td>
+                    <td>${response[i]['os']}</td>
+                    <td>${response[i]['screensize']}</td>
+                    <td class="product-image">
+                        <figure>
+                            <img src=${response[i]['image']} alt=${response[i]['brand']} ${response[i]['model']}>
+                            <figcaption>${response[i]['brand']} ${response[i]['model']}</figcaption>
+                        </figure>
+                    </td>
+                </tr>
+            `)
+        }
+    })
+}
+
+
+$(function() {
+    fetchProducts()
+})
+
 // Create a single product with a AJAX call to the API.
 const createProduct = async (product) => {
     const createUrl = `https://wt.ops.labs.vu.nl/api22/${API_KEY}`
@@ -211,27 +241,6 @@ $('#add-product-form').on('submit', (form) => {
     })
 })
 
-$("input.restore").click(function () {
-    $.ajax({
-        url: "https://wt.ops.labs.vu.nl/api22/6b1e7103",
-        method: "GET",
-        responseType: "JSON"
-    }).done(response => {
-        for (let i = 0; i < response.length; i++) {
-            $("tbody.table-body").append(`
-                <tr>
-                    <td>${response[i]['brand']}</td>
-                    <td>${response[i]['model']}</td>
-                    <td>${response[i]['os']}</td>
-                    <td>${response[i]['screensize']}</td>
-                    <td class="product-image">
-                        <figure>
-                            <img src=${response[i]['image']} alt=${response[i]['brand']} ${response[i]['model']}>
-                            <figcaption>${response[i]['brand']} ${response[i]['model']}</figcaption>
-                        </figure>
-                    </td>
-                </tr>
-            `)
-        }
-    })
+$("input.restore").on('click', () => {
+   fetchProducts()
 })
