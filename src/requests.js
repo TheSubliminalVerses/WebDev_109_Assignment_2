@@ -10,28 +10,6 @@
 
 const API_KEY = '6b1e7103'
 
-// $("div.intro").append("<p>This is a jquery test!</p>").append("<p>This is another paragraph!</p>")
-//
-// $("input[type='text']").keyup(function () {
-//     if (isNaN(parseInt(this.value))) {
-//         this.style.border = "2px solid red"
-//     } else if (!isNaN(parseInt(this.value)) && this.style.border === "2px solid red") {
-//         this.style.border = "0 solid red"
-//     }
-// }).blur(function () {
-//     this.style.border = "0 solid red"
-// })
-//
-// $("input[type='number']").keyup(function () {
-//     if (isNaN(parseInt(this.value))) {
-//         this.style.border = "2px solid red"
-//     } else if (!isNaN(parseInt(this.value)) && this.style.border === "2px solid red") {
-//         this.style.border = "0 solid red"
-//     }
-// }).blur(function () {
-//     this.style.border = "0 solid red"
-// })
-
 $('#reset-product-table-button').on('click', () => {
     let confirm = window.confirm('Are you sure? All data will be lost.')
 
@@ -128,7 +106,9 @@ const fetchProducts = async () => {
 
 
 $(function() {
-    fetchProducts()
+    fetchProducts().then(function () {
+        console.log("?Product Fetched!")
+    })
 })
 
 // Create a single product with a AJAX call to the API.
@@ -245,27 +225,8 @@ $('#add-product-form').on('submit', (form) => {
 // Restores the table with the data from the distant database.
 $("input.restore").on("click", function () {
     removeElements()
-    $.ajax({
-        url: "https://wt.ops.labs.vu.nl/api22/6b1e7103",
-        method: "GET",
-        responseType: "JSON"
-    }).done(response => {
-        for (let i = 0; i < response.length; i++) {
-            $("tbody.table-body").append(`
-                <tr>
-                    <td>${response[i]['brand']}</td>
-                    <td>${response[i]['model']}</td>
-                    <td>${response[i]['os']}</td>
-                    <td>${response[i]['screensize']}</td>
-                    <td class="product-image">
-                        <figure>
-                            <img src=${response[i]['image']} alt=${response[i]['brand']} ${response[i]['model']}>
-                            <figcaption>${response[i]['brand']} ${response[i]['model']}</figcaption>
-                        </figure>
-                    </td>
-                </tr>
-            `)
-        }
+    fetchProducts().then(function () {
+        console.log("?Product Fetched!")
     })
 })
 
