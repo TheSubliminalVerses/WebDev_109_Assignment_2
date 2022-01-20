@@ -10,28 +10,6 @@
 
 const API_KEY = '6b1e7103'
 
-// $("div.intro").append("<p>This is a jquery test!</p>").append("<p>This is another paragraph!</p>")
-//
-// $("input[type='text']").keyup(function () {
-//     if (isNaN(parseInt(this.value))) {
-//         this.style.border = "2px solid red"
-//     } else if (!isNaN(parseInt(this.value)) && this.style.border === "2px solid red") {
-//         this.style.border = "0 solid red"
-//     }
-// }).blur(function () {
-//     this.style.border = "0 solid red"
-// })
-//
-// $("input[type='number']").keyup(function () {
-//     if (isNaN(parseInt(this.value))) {
-//         this.style.border = "2px solid red"
-//     } else if (!isNaN(parseInt(this.value)) && this.style.border === "2px solid red") {
-//         this.style.border = "0 solid red"
-//     }
-// }).blur(function () {
-//     this.style.border = "0 solid red"
-// })
-
 $('#reset-product-table-button').on('click', () => {
     let confirm = window.confirm('Are you sure? All data will be lost.')
 
@@ -41,6 +19,8 @@ $('#reset-product-table-button').on('click', () => {
         $.ajax({ url: resetUrl }).done((response) => {
             if (response.Success) {
                 showMessage($('#request-feedback'), 'Table reset successful!')
+                removeElements()
+                fetchProducts()
             }
         }).catch((error) => {
             showMessage($('#request-error'), `Table reset failed! ${error.responseJSON.Error}`)
@@ -96,8 +76,9 @@ $('#create-demo-data-button').on('click', () => {
         return createProduct(product)
     })
 
-    Promise.all(promises).then((products) => {
-        // @todo Reload table.
+    Promise.all(promises).then(() => {
+        removeElements()
+        fetchProducts()
     })
 })
 
@@ -108,24 +89,10 @@ const fetchProducts = async () => {
         responseType: "JSON"
     }).done(response => {
         for (let i = 0; i < response.length; i++) {
-            $("tbody.table-body").append(`
-                <tr>
-                    <td>${response[i]['brand']}</td>
-                    <td>${response[i]['model']}</td>
-                    <td>${response[i]['os']}</td>
-                    <td>${response[i]['screensize']}</td>
-                    <td class="product-image">
-                        <figure>
-                            <img src=${response[i]['image']} alt=${response[i]['brand']} ${response[i]['model']}>
-                            <figcaption>${response[i]['brand']} ${response[i]['model']}</figcaption>
-                        </figure>
-                    </td>
-                </tr>
-            `)
+            addProductToTable(response[i])
         }
     })
 }
-
 
 $(function() {
     fetchProducts()
@@ -172,7 +139,7 @@ const addProductToTable = (product) => {
         <td>${product["screensize"]}</td>
         <td class="product-image">
             <figure>
-                <img src=${product["image"]} alt=${product["brand"]} ${product["model"]}
+                <img src=${product["image"]} alt=${product["brand"]} ${product["model"]}>
                 <figcaption>${product["brand"]} ${product["model"]}</figcaption>
             </figure>
         </td>
@@ -245,28 +212,7 @@ $('#add-product-form').on('submit', (form) => {
 // Restores the table with the data from the distant database.
 $("input.restore").on("click", function () {
     removeElements()
-    $.ajax({
-        url: "https://wt.ops.labs.vu.nl/api22/6b1e7103",
-        method: "GET",
-        responseType: "JSON"
-    }).done(response => {
-        for (let i = 0; i < response.length; i++) {
-            $("tbody.table-body").append(`
-                <tr>
-                    <td>${response[i]['brand']}</td>
-                    <td>${response[i]['model']}</td>
-                    <td>${response[i]['os']}</td>
-                    <td>${response[i]['screensize']}</td>
-                    <td class="product-image">
-                        <figure>
-                            <img src=${response[i]['image']} alt=${response[i]['brand']} ${response[i]['model']}>
-                            <figcaption>${response[i]['brand']} ${response[i]['model']}</figcaption>
-                        </figure>
-                    </td>
-                </tr>
-            `)
-        }
-    })
+    fetchProducts()
 })
 
 /**

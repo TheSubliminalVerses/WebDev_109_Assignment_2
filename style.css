@@ -476,7 +476,7 @@ table.table-menu input[type="button"] {
 }
 
 .input-row .input-error {
-    display: inline-block;
+    display: block;
     font-size: 12px;
     color: red;
 }
