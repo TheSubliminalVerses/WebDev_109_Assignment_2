@@ -179,6 +179,7 @@ const addProductToTable = (product) => {
     </tr>`)
 }
 
+// form submit handler.
 $('#add-product-form').on('submit', (form) => {
     form.preventDefault();
     $('.input-error').remove()
@@ -241,6 +242,45 @@ $('#add-product-form').on('submit', (form) => {
     })
 })
 
-$("input.restore").on('click', () => {
-   fetchProducts()
+// Restores the table with the data from the distant database.
+$("input.restore").on("click", function () {
+    removeElements()
+    $.ajax({
+        url: "https://wt.ops.labs.vu.nl/api22/6b1e7103",
+        method: "GET",
+        responseType: "JSON"
+    }).done(response => {
+        for (let i = 0; i < response.length; i++) {
+            $("tbody.table-body").append(`
+                <tr>
+                    <td>${response[i]['brand']}</td>
+                    <td>${response[i]['model']}</td>
+                    <td>${response[i]['os']}</td>
+                    <td>${response[i]['screensize']}</td>
+                    <td class="product-image">
+                        <figure>
+                            <img src=${response[i]['image']} alt=${response[i]['brand']} ${response[i]['model']}>
+                            <figcaption>${response[i]['brand']} ${response[i]['model']}</figcaption>
+                        </figure>
+                    </td>
+                </tr>
+            `)
+        }
+    })
 })
+
+/**
+ * @function removeElements - Removes the table elements before updating the table.
+ * @returns {void}
+ */
+function removeElements() {
+    let parent = document.getElementById("body-1")
+
+    if (parent.children.length > 0) {
+        let arr = Array.from(parent.children)
+
+        for (let child of arr) {
+            parent.removeChild(child)
+        }
+    }
+}
