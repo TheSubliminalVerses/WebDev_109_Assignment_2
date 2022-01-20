@@ -1,3 +1,12 @@
+/**
+ * This webpage is written by Mani Gudvardarson and Michael Adrian Polesensky
+ * for Assignment 2 in Web Technology at VU University Amsterdam.
+ *
+ * Coordinator: J.R . van Ossenbruggen
+ * TA: Mithat Ozgun
+ * Group: 109
+ * Date: 20.1.2022
+ */
 const linkElements = document.getElementsByClassName("order")
 const typewrite = document.getElementById("type")
 const aboutBtn = document.getElementById("about")
@@ -16,7 +25,7 @@ closeBtn.addEventListener("click", function () {
 })
 
 window.addEventListener("load", function () {
-    bind("click", linkElements, [function () {
+    bind("click", linkElements, [function (event) {
         let parentElement = document.getElementById("body-1")
         let children = makeElementArray(parentElement)
 
@@ -36,6 +45,11 @@ window.addEventListener("load", function () {
         let children = makeElementArray(parentElement)
 
         orderElementList(children, 3, parentElement, 0)
+    }, function () {
+        let parentElement = document.getElementById("body-2")
+        let children = makeElementArray(parentElement)
+
+        orderElementList(children, 0, parentElement, 0)
     }, function () {
         let parentElement = document.getElementById("body-2")
         let children = makeElementArray(parentElement)
@@ -65,10 +79,10 @@ window.addEventListener("load", function () {
  */
 function orderElementList(children, index, parentElement, Start) {
     children.sort((a, b) => {
-        if (a.children[index].hasAttribute('data-score') && b.children[index].hasAttribute('data-score')) {
-            if (a.children[index].getAttribute('data-score') > b.children[index].getAttribute('data-score')) {
+        if (a.children[index].hasAttribute('data-value') && b.children[index].hasAttribute('data-value')) {
+            if (a.children[index].getAttribute('data-value') > b.children[index].getAttribute('data-value')) {
                 return -1
-            } else if (a.children[index].getAttribute('data-score') < b.children[index].getAttribute('data-score')) {
+            } else if (a.children[index].getAttribute('data-value') < b.children[index].getAttribute('data-value')) {
                 return 1
             }
 
