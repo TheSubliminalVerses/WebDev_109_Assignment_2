@@ -98,35 +98,41 @@
             <h2>Top Selling Products</h2>
 
             <form action="#" method="post" id="add-product-form"></form>
-            <table class="table-1">
+            <table class="product-table">
                 <caption>Product table</caption>
                 <thead>
                     <tr>
-                        <th><span class="order">Brand</span></th>
-                        <th><span class="order">Model</span></th>
-                        <th><abbr title="Operating System"><span class="order">OS</span></abbr></th>
-                        <th><span class="order">Screen Size</span></th>
-                        <th>image</th>
+                        <th class="brand"><span class="order">Brand</span></th>
+                        <th class="model"><span class="order">Model</span></th>
+                        <th class="os"><abbr title="Operating System"><span class="order">OS</span></abbr></th>
+                        <th class="screensize"><span class="order">Screen Size</span></th>
+                        <th class="image">image</th>
                     </tr>
                 </thead>
                 <tbody class="table-body" id="body-1">
                 </tbody>
                 <tfoot>
+                    <tr colspan="5">Add product</tr>
                     <tr class="input-row">
                         <td>
-                            <input name="brand" type="text" placeholder="Example: Apple" form="add-product-form" required>
+                            <label for="brand">Brand</label>
+                            <input name="brand" id="brand" type="text" placeholder="Example: Apple" form="add-product-form" required>
                         </td>
                         <td>
-                            <input name="model" type="text" placeholder="Example: iPhone 12" form="add-product-form" required>
+                            <label for="model">Model</label>
+                            <input name="model" type="text" id="model" placeholder="Example: iPhone 12" form="add-product-form" required>
                         </td>
                         <td>
-                            <input name="os" type="text" placeholder="Example: iOS" form="add-product-form" required>
+                            <label for="os">OS</label>
+                            <input name="os" type="text" id="os" placeholder="Example: iOS" form="add-product-form" required>
                         </td>
                         <td>
-                            <input name="screensize" type="number" form="add-product-form" max="100" min="1" step="1" required><abbr title="Inches">in</abbr>
+                            <label for="screensize">Screensize</label>
+                            <input name="screensize" type="number" id="screensize" form="add-product-form" max="100" min="1" step="1" required><abbr title="Inches">in</abbr>
                         </td>
                         <td>
-                            <input name="image" type="url" form="add-product-form" placeholder="https://..." required>
+                            <label for="image">Image URL</label>
+                            <input name="image" type="url" id="image" form="add-product-form" placeholder="https://..." required>
                         </td>
                     </tr>
                     <tr>
@@ -155,42 +161,42 @@
                 <caption>Table of reviews</caption>
                 <thead>
                     <tr>
-                        <th class="table-date">Date</th>
-                        <th><span class="order">User</span></th>
-                        <th><span class="order">Feedback</span></th>
-                        <th><span class="order">Score</span></th>
+                        <th class="date"><span class="order">Date</span></th>
+                        <th class="user"><span class="order">User</span></th>
+                        <th class="feedback"><span class="order">Feedback</span></th>
+                        <th class="score"><span class="order">Score</span></th
                     </tr>
                 </thead>
                 <tbody id="body-2">
                     <tr>
-                        <td>10 Jan 2022</td>
+                        <td data-value="20220110">10 Jan 2022</td>
                         <td>Mike</td>
                         <td>Thanks</td>
                         <td class="score" data-score="3">&#9734;&#9734;&#9733;&#9733;&#9733;</td>
                     </tr>
                     <tr>
-                        <td>8 Jan 2022</td>
+                        <td data-value="20220108">8 Jan 2022</td>
                         <td>Alice</td>
                         <td>Great service and fast delivery</td>
-                        <td class="score" data-score="4">&#9734;&#9733;&#9733;&#9733;&#9733;</td>
+                        <td class="score" data-value="4">&#9734;&#9733;&#9733;&#9733;&#9733;</td>
                     </tr>
                     <tr>
-                        <td>4 Jan 2022</td>
+                        <td data-value="20220104">4 Jan 2022</td>
                         <td>Jenny</td>
                         <td>Best webshop, use it all the time.</td>
-                        <td class="score" data-score="5">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
+                        <td class="score" data-value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</td>
                     </tr>
                     <tr>
-                        <td>2 Jan 2022</td>
+                        <td data-value="20220102">2 Jan 2022</td>
                         <td>Henry</td>
                         <td>Great prices and large selection of products.</td>
-                        <td class="score" data-score="4">&#9734;&#9733;&#9733;&#9733;&#9733;</td>
+                        <td class="score" data-value="4">&#9734;&#9733;&#9733;&#9733;&#9733;</td>
                     </tr>
                     <tr>
-                        <td>1 Jan 2022</td>
+                        <td data-value="20220101">1 Jan 2022</td>
                         <td>Flinn</td>
                         <td>I had a small issue with the product, customer service solved the issue right away.</td>
-                        <td class="score" data-score="3">&#9734;&#9734;&#9733;&#9733;&#9733;</td>
+                        <td class="score" data-value="3">&#9734;&#9734;&#9733;&#9733;&#9733;</td>
                     </tr>
                 </tbody>
             </table>
@@ -259,10 +265,13 @@
     - Opera v82
 
     Mobile:
-    - Android v10 - Responsive
-    - iPhone v13 - Responsive
+    - Android v10 (Chrome Mobile) - Responsive
+    - iPhone v13 (Safari Mobile) - Responsive
 
     Print:
     - Specific page breaks have been added
     - Forms have been hidden
+
+    Scripts:
+    - The application will work with all browsers supporting jQuery v3.4.1
 -->

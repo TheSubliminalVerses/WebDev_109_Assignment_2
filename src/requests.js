@@ -40,7 +40,7 @@ $('#create-demo-data-button').on('click', () => {
             model: 'iPhone 13',
             os: 'iOS 15.0',
             screensize: 6,
-            image: 'https://hi.com'
+            image: 'https://i.cdn.nrholding.net/63563528/1000/1000'
         },
         {
             brand: 'Apple',
