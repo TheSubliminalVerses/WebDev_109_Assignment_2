@@ -361,6 +361,7 @@ span.order {
     text-decoration: none;
     color: #0099ff;
     transition: 500ms linear;
+    cursor: pointer ;
 }
 
 span.order:hover {
@@ -709,15 +710,14 @@ section#return-policy div.heading h2 {
         font-size: 12px;
         padding-bottom: 0;
     }
-
     section {
         margin-bottom: 20px;
         padding-left: 5px;
         padding-right: 5px;
     }
-
     table.top-selling-products th, td {padding: 2px}
     table.top-selling-products img {height: 50px}
+    table tbody {column-width: 0}
     button[type="submit"] {
         padding: 2px 5px 2px 5px;
         font-size: 10px;

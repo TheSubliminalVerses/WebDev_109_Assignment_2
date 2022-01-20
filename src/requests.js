@@ -95,12 +95,11 @@ const fetchProducts = async () => {
 }
 
 $(function() {
-    fetchProducts().then(function () {
-        console.log("?Product Fetched!")
-    })
+    removeElements()
+    fetchProducts()
 })
 
-// Create a single product with a AJAX call to the API.
+// Create a single product with AJAX call to the API.
 const createProduct = async (product) => {
     const createUrl = `https://wt.ops.labs.vu.nl/api22/${API_KEY}`
 
