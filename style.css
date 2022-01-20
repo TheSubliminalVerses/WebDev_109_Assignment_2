@@ -507,6 +507,23 @@ input[type="button"]:hover.danger {
     border-bottom: 2px solid orangered;
 }
 
+input.restore {
+    color: black;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    background-color: #00cc66;
+    transition: 500ms linear;
+    cursor: pointer;
+}
+
+input.restore:hover {
+    border-radius: 25px;
+    border-bottom: 2px solid darkgreen;
+    box-shadow: 1px 5px 10px #ccc;
+    color: #555;
+}
+
 p#type {
     animation: colorAnimation 15s ease-in infinite;
 }
