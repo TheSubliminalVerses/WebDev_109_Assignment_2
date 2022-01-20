@@ -22,7 +22,7 @@ const API_KEY = '6b1e7103'
 //     this.style.border = "0 solid red"
 // })
 
-$('#reset-product-table-button').click(() => {
+$('#reset-product-table-button').on('click', () => {
     let confirm = window.confirm('Are you sure? All data will be lost.')
 
     if (confirm === true) {
@@ -38,9 +38,70 @@ $('#reset-product-table-button').click(() => {
     }
 })
 
-$('#add-product-button').click(() => {
-    $('#add-product-form').submit()
+$('#add-product-button').on('click', (event) => {
+    event.preventDefault()
+    $('#add-product-form').trigger('submit')
 })
+
+$('#add-initial-data-button').on('click', () => {
+    const INITIAL_DATA = [
+        {
+            brand: 'Apple',
+            model: 'iPhone 13',
+            os: 'iOS 15.0',
+            screensize: 6,
+            image: 'https://hi.com'
+        },
+        {
+            brand: 'Apple',
+            model: 'MacBook Pro 14',
+            os: 'macOS 11.6',
+            screensize: 14,
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgSxgpT72SixqlSOnoSaoyaGmRethsjDBfXQ&usqp=CAU'
+        },
+        {
+            brand: 'Samsung',
+            model: 'Galaxy S21 Ultra',
+            os: 'Android 11',
+            screensize: 7,
+            image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/GalaxyS21.png/440px-GalaxyS21.png'
+        },
+        {
+            brand: 'Apple',
+            model: 'Watch Series 7',
+            os: 'watchOS 8.3',
+            screensize: 2,
+            image: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/MKUQ3_VW_PF+watch-45-alum-midnight-nc-7s_VW_PF_WF_CO?wid=1400&hei=1400&trim=1,0&fmt=p-jpg&qlt=95&.v=1632171068000,1631661680000'
+        },
+        {
+            brand: 'Microsoft',
+            model: 'Surface Laptop 4',
+            os: 'Windows 11',
+            screensize: 15,
+            image: 'https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RWBrzy?ver=85d4&q=90&m=6&h=270&w=270&b=%23FFFFFFFF&f=jpg&o=f&aim=true'
+        }
+    ]
+
+    const promises = INITIAL_DATA.map((product) => {
+        return createProduct(product)
+    })
+
+    Promise.all(promises).then((products) => {
+        // @todo Reload table.
+    })
+})
+
+const createProduct = async (product) => {
+    const createUrl = `https://wt.ops.labs.vu.nl/api22/${API_KEY}`
+
+    return $.ajax({
+        url: createUrl,
+        method: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(product)
+    })
+}
 
 // Toggles a message for 2.5 seconds in an element
 const showMessage = ($elm, message) => {
@@ -77,9 +138,8 @@ const addProductToTable = (product) => {
     </tr>`)
 }
 
-$('#add-product-form').submit((form) => {
+$('#add-product-form').on('submit', (form) => {
     form.preventDefault();
-    const addUrl = `https://wt.ops.labs.vu.nl/api22/${API_KEY}`
     $('.input-error').remove()
     let isFormValid = true
 
@@ -129,11 +189,7 @@ $('#add-product-form').submit((form) => {
         return
     }
 
-    $.ajax({
-        url: addUrl,
-        method: 'POST',
-        data: product
-    }).done((response) => {
+    createProduct(product).then((response) => {
         if (response.URI) {
             fetchSingleProductByURI(response.URI)
             showMessage($('#request-feedback'), 'Product added successful!')
