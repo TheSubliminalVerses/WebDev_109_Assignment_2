@@ -95,7 +95,9 @@ const fetchProducts = async () => {
 }
 
 $(function() {
-    fetchProducts()
+    fetchProducts().then(function () {
+        console.log("?Product Fetched!")
+    })
 })
 
 // Create a single product with a AJAX call to the API.
