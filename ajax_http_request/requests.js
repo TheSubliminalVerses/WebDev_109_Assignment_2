@@ -53,8 +53,8 @@ $('#add-product-button').on('click', (event) => {
     $('#add-product-form').trigger('submit')
 })
 
-$('#add-initial-data-button').on('click', () => {
-    const INITIAL_DATA = [
+$('#create-demo-data-button').on('click', () => {
+    const DEMO_PRODUCTS = [
         {
             brand: 'Apple',
             model: 'iPhone 13',
@@ -92,7 +92,7 @@ $('#add-initial-data-button').on('click', () => {
         }
     ]
 
-    const promises = INITIAL_DATA.map((product) => {
+    const promises = DEMO_PRODUCTS.map((product) => {
         return createProduct(product)
     })
 
